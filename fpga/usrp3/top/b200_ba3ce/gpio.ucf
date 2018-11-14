@@ -10,3 +10,5 @@ NET "fp_gpio<5>" LOC = "G9" | IOSTANDARD = LVCMOS33 | PULLUP ;
 NET "fp_gpio<6>" LOC = "F10" | IOSTANDARD = LVCMOS33 | PULLUP ;
 NET "fp_gpio<7>" LOC = "E10" | IOSTANDARD = LVCMOS33 | PULLUP ;
 
+
+
