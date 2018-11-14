@@ -91,6 +91,13 @@ module b200 (
    output 	 LED_TXRX1_TX,
    output 	 LED_TXRX2_RX,
    output 	 LED_TXRX2_TX,
+	
+	output 	 LED_RX1_OUT,
+   output 	 LED_RX2_OUT,
+   output 	 LED_TXRX1_RX_OUT,
+   output 	 LED_TXRX1_TX_OUT,
+   output 	 LED_TXRX2_RX_OUT,
+   output 	 LED_TXRX2_TX_OUT,
 
    // GPIO Header J504  - 10 pin 0.1" 3.3V.
    // Only present on Rev6 and later boards...these pins unused on Rev5 and earlier.
@@ -118,14 +125,6 @@ module b200 (
    output 	 SRX1_TX,
    output 	 SRX2_RX,
    output 	 SRX2_TX,
-   output 	 SFDX1_RX_OUT,
-   output 	 SFDX1_TX_OUT,
-   output 	 SFDX2_RX_OUT,
-   output 	 SFDX2_TX_OUT,
-   output 	 SRX1_RX_OUT,
-   output 	 SRX1_TX_OUT,
-   output 	 SRX2_RX_OUT,
-   output 	 SRX2_TX_OUT,	
    output 	 tx_bandsel_a,
    output 	 tx_bandsel_b,
    output 	 tx_enable1,
@@ -268,14 +267,15 @@ module b200 (
    end
    assign {tx_enable1, SFDX1_RX, SFDX1_TX, SRX1_RX, SRX1_TX, LED_RX1, LED_TXRX1_RX, LED_TXRX1_TX} = fe0_gpio;
    assign {tx_enable2, SFDX2_RX, SFDX2_TX, SRX2_RX, SRX2_TX, LED_RX2, LED_TXRX2_RX, LED_TXRX2_TX} = fe1_gpio;
-	assign SFDX1_RX_OUT   = SFDX1_RX;
-	assign SFDX2_RX_OUT   = SFDX2_RX;
-	assign SFDX1_TX_OUT   = SFDX1_TX;
-	assign SFDX2_TX_OUT   = SFDX2_TX;
-	assign SRX1_RX_OUT    = SRX1_RX;
-	assign SRX2_RX_OUT    = SRX2_RX;
-	assign SRX1_TX_OUT    = SRX1_TX;
-	assign SRX2_TX_OUT    = SRX2_TX;	
+	
+	assign LED_TXRX1_RX_OUT   = LED_TXRX1_RX;
+	assign LED_TXRX1_TX_OUT   = LED_TXRX1_TX;
+	assign LED_RX1_OUT   	  = LED_RX1;
+	assign LED_TXRX2_RX_OUT   = LED_TXRX2_RX;
+	assign LED_TXRX2_TX_OUT   = LED_TXRX2_TX;
+	assign LED_RX2_OUT        = LED_RX2;
+	
+	
    wire [31:0] misc_outs; reg [31:0] misc_outs_r;
 
    always @(posedge bus_clk) misc_outs_r <= misc_outs; //register misc ios to ease routing to flop
